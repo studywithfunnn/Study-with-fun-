@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अध्याय 2: भारत में राष्ट्रवाद - StudyWithFun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Consistent CSS from previous pages */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --history-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            --bg-light: #f8f9ff; --bg-dark: #1a1a2e;
+            --text-dark: #2d3436; --text-light: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1); --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        body { font-family:'Poppins',sans-serif; background:var(--bg-light); color:var(--text-dark); line-height:1.6; }
+        body.dark-mode { background:var(--bg-dark); color:var(--text-light); }
+        
+        /* ANIMATIONS */
+        @keyframes slideInDown {
+            from { opacity:0; transform:translateY(-30px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+        @keyframes slideInUp {
+            from { opacity:0; transform:translateY(30px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity:0; }
+            to { opacity:1; }
+        }
+        @keyframes scaleIn {
+            from { opacity:0; transform:scale(0.95); }
+            to { opacity:1; transform:scale(1); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform:scale(1); }
+            50% { transform:scale(1.05); }
+        }
+        @keyframes shimmer {
+            0% { background-position:0% 50%; }
+            50% { background-position:100% 50%; }
+            100% { background-position:0% 50%; }
+        }
+        @keyframes float {
+            0%, 100% { transform:translateY(0px); }
+            50% { transform:translateY(-10px); }
+        }
+
+        nav { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:1rem 0; box-shadow:0 2px 20px rgba(0,0,0,0.05); position:sticky; top:0; z-index:1000; animation:slideInDown 0.6s ease-out; }
+        body.dark-mode nav { background:rgba(26,26,46,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Baloo 2',cursive; font-size:1.8rem; font-weight:800; background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:slideInDown 0.6s ease-out 0.1s backwards; }
+        .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+        .nav-links li { animation:slideInDown 0.6s ease-out; }
+        .nav-links li:nth-child(1) { animation-delay:0.2s; }
+        .nav-links li:nth-child(2) { animation-delay:0.3s; }
+        .nav-links li:nth-child(3) { animation-delay:0.4s; }
+        .nav-links a { text-decoration:none; color:var(--text-dark); font-weight:500; transition:all 0.3s; position:relative; }
+        body.dark-mode .nav-links a { color:var(--text-light); }
+        .nav-links a::after { content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--primary-gradient); transition:width 0.3s; }
+        .nav-links a:hover::after { width:100%; }
+        .dark-mode-toggle { background:var(--primary-gradient); border:none; color:white; padding:0.5rem 1rem; border-radius:25px; cursor:pointer; font-size:1.2rem; transition:all 0.3s; animation:slideInDown 0.6s ease-out 0.4s backwards; }
+        .dark-mode-toggle:hover { transform:scale(1.1) rotate(20deg); }
+        
+        .back-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; background:linear-gradient(135deg,#ff6b6b 0%,#ee5a6f 100%); color:white; text-decoration:none; border-radius:25px; font-weight:600; transition:all 0.3s; box-shadow:0 5px 15px rgba(255,107,107,0.3); animation:slideInUp 0.6s ease-out; }
+        .back-btn:hover { transform:translateY(-3px); box-shadow:0 10px 25px rgba(255,107,107,0.5); }
+        
+        .subject-header { background:var(--history-gradient); color:white; padding:4rem 2rem 3rem; text-align:center; position:relative; overflow:hidden; animation:slideInDown 0.8s ease-out; }
+        .subject-header::before { content:'🇮🇳📜'; position:absolute; font-size:15rem; opacity:0.1; top:50%; left:50%; transform:translate(-50%,-50%); animation:float 4s ease-in-out infinite; }
+        .subject-header h1 { font-family:'Baloo 2',cursive; font-size:clamp(2.5rem,6vw,4rem); margin-bottom:1rem; animation:slideInUp 0.8s ease-out 0.2s backwards; }
+        .subject-header p { animation:slideInUp 0.8s ease-out 0.4s backwards; }
+        
+        .container { max-width:1200px; margin:0 auto; padding:3rem 2rem; }
+        .notes-section { background:white; border-radius:20px; padding:2.5rem; box-shadow:var(--shadow); margin-bottom:3rem; animation:scaleIn 0.6s ease-out; transition:all 0.3s; }
+        .notes-section:hover { box-shadow:var(--shadow-hover); transform:translateY(-5px); }
+        body.dark-mode .notes-section { background:#2d3436; }
+        
+        h2 { font-family:'Baloo 2',cursive; color:#ff6b6b; margin:2.5rem 0 1rem; font-size:2.2rem; animation:slideInUp 0.6s ease-out; }
+        body.dark-mode h2 { color:#ff9f43; }
+        
+        ul { list-style:none; padding-left:2rem; }
+        li { margin-bottom:1.2rem; position:relative; animation:slideInUp 0.6s ease-out; opacity:0; }
+        li:nth-child(1) { animation-delay:0.1s; animation-fill-mode:forwards; }
+        li:nth-child(2) { animation-delay:0.2s; animation-fill-mode:forwards; }
+        li:nth-child(3) { animation-delay:0.3s; animation-fill-mode:forwards; }
+        li:nth-child(4) { animation-delay:0.4s; animation-fill-mode:forwards; }
+        li:nth-child(5) { animation-delay:0.5s; animation-fill-mode:forwards; }
+        li:nth-child(6) { animation-delay:0.6s; animation-fill-mode:forwards; }
+        li:nth-child(7) { animation-delay:0.7s; animation-fill-mode:forwards; }
+        li::before { content:'➤'; position:absolute; left:-2rem; color:#ff6b6b; font-weight:bold; font-size:1.2rem; transition:all 0.3s; }
+        li:hover::before { transform:translateX(-5px) scale(1.3); color:#ee5a6f; }
+        
+        .important { background:rgba(255,107,107,0.1); padding:1.5rem; border-radius:12px; margin:1.5rem 0; border-left:6px solid #ff6b6b; font-weight:500; animation:scaleIn 0.6s ease-out; transition:all 0.3s; position:relative; overflow:hidden; }
+        .important::before { content:''; position:absolute; top:0; left:0; width:0; height:100%; background:rgba(255,107,107,0.2); animation:shimmer 3s ease-in-out infinite; }
+        .important { position:relative; z-index:1; }
+        body.dark-mode .important { background:rgba(255,107,107,0.2); }
+        .important:hover { transform:translateX(10px); box-shadow:0 5px 15px rgba(255,107,107,0.2); }
+        
+        .video-section { margin:3rem 0; text-align:center; background:#f8f9ff; padding:1.5rem; border-radius:15px; animation:slideInUp 0.6s ease-out; }
+        body.dark-mode .video-section { background:#2d3436; }
+        
+        .pdf-btn { display:inline-block; background:#ff6b6b; color:white; padding:1rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; margin:1.5rem 0; box-shadow:0 6px 18px rgba(255,107,107,0.3); transition:all 0.3s; animation:slideInUp 0.6s ease-out; position:relative; overflow:hidden; }
+        .pdf-btn::before { content:''; position:absolute; top:50%; left:50%; width:0; height:0; background:rgba(255,255,255,0.3); border-radius:50%; transform:translate(-50%, -50%); transition:width 0.6s, height 0.6s; }
+        .pdf-btn:hover::before { width:300px; height:300px; }
+        .pdf-btn:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(255,107,107,0.5); }
+        
+        .timeline { position:relative; padding:2rem 0; }
+        .timeline-item { margin:2rem 0; padding:1.5rem; background:rgba(255,107,107,0.1); border-radius:12px; border-left:5px solid #ff6b6b; animation:slideInUp 0.6s ease-out; transition:all 0.3s; }
+        .timeline-item:hover { transform:translateX(10px); box-shadow:0 5px 20px rgba(255,107,107,0.2); }
+        .timeline-item strong { color:#ff6b6b; font-size:1.1rem; }
+        body.dark-mode .timeline-item { background:rgba(255,107,107,0.15); }
+        
+        footer { background:var(--primary-gradient); color:white; text-align:center; padding:2.5rem; margin-top:5rem; animation:slideInUp 0.8s ease-out; }
+        
+        @media (max-width:768px) { 
+            .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:white; flex-direction:column; padding:1.5rem; animation:slideInDown 0.3s ease-out; }
+            body.dark-mode .nav-links { background:#1a1a2e; }
+            .nav-links.active { display:flex; }
+            .mobile-menu-toggle { display:block; background:none; border:none; font-size:1.5rem; cursor:pointer; }
+            iframe { height:300px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">StudyWithFun 🎓</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sst.html">SST Home</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="subject-header">
+        <a href="sst.html" class="back-btn">← SST पेज पर वापस</a>
+        <h1>अध्याय 2: भारत में राष्ट्रवाद 🇮🇳📜</h1>
+        <p>Class 10 हिंदी माध्यम | CBSE 2025-26 Syllabus | पूरे चैप्टर के आसान नोट्स, वीडियो और PDF</p>
+    </section>
+
+    <div class="container">
+        <div class="notes-section">
+            <h2>परिचय और महत्व</h2>
+            <p>यह अध्याय 1920 से शुरू होता है – प्रथम विश्व युद्ध के प्रभाव से राष्ट्रवाद तेज हुआ। गांधीजी के सत्याग्रह, असहयोग आंदोलन, सविनय अवज्ञा आंदोलन से विभिन्न वर्गों (किसान, मजदूर, दलित, मुस्लिम, व्यापारी) ने भाग लिया।</p>
+            <div class="important">
+                <strong>🎯 मुख्य थीम:</strong> प्रथम विश्व युद्ध → रॉलेट एक्ट → जलियांवाला बाग → खिलाफत + असहयोग → सविनय अवज्ञा → अलग-अलग समूहों की भूमिका।
+            </div>
+
+            <h2>1. प्रथम विश्व युद्ध का प्रभाव (1914-1918)</h2>
+            <ul>
+                <li>💰 <strong>आर्थिक बोझ:</strong> सेना भर्ती, कर बढ़े, महंगाई, फसलें खराब।</li>
+                <li>🔥 <strong>राष्ट्रीय भावना बढ़ी:</strong> ब्रिटिश वादे (स्वशासन) पूरे नहीं हुए।</li>
+                <li>🕯️ <strong>गांधीजी का आगमन (1915):</strong> चंपारण (1917), खेड़ा (1918), अहमदाबाद मिल हड़ताल (1918) में सत्याग्रह सफल।</li>
+            </ul>
+
+            <h2>2. रॉलेट एक्ट और जलियांवाला बाग हत्याकांड (1919)</h2>
+            <ul>
+                <li>⚖️ <strong>रॉलेट एक्ट:</strong> बिना ट्रायल गिरफ्तारी, प्रेस सेंसरशिप।</li>
+                <li>✊ <strong>असहयोग:</strong> हड़ताल, प्रदर्शन।</li>
+                <li>💔 <strong>जलियांवाला बाग (13 अप्रैल 1919, अमृतसर):</strong> जनरल डायर ने गोली चलवाई – हजारों मारे गए।</li>
+                <li>🙏 <strong>रौलट सत्याग्रह:</strong> गांधीजी ने शुरू किया, लेकिन हिंसा के कारण वापस लिया।</li>
+            </ul>
+
+            <h2>3. खिलाफत आंदोलन और असहयोग आंदोलन (1920-22)</h2>
+            <ul>
+                <li>🕌 <strong>खिलाफत:</strong> तुर्की के खलीफा के लिए मुस्लिमों का आंदोलन (अली भाई)।</li>
+                <li>🤝 <strong>हिंदू-मुस्लिम एकता:</strong> गांधीजी ने समर्थन दिया।</li>
+                <li>🚫 <strong>असहयोग (1920):</strong> स्कूल/कॉलेज छोड़ो, अदालत/सरकारी नौकरी त्यागो, विदेशी कपड़े जलाओ।</li>
+                <li>🔥 <strong>चौरी-चौरा (फरवरी 1922):</strong> 22 पुलिसकर्मी मारे गए। गांधीजी ने आंदोलन वापस लिया (सविनय अवज्ञा अभी नहीं)।</li>
+            </ul>
+
+            <h2>4. सविनय अवज्ञा आंदोलन (1930-1934)</h2>
+            <ul>
+                <li>📜 <strong>नमक सत्याग्रह (दांडी मार्च, मार्च 1930):</strong> 240 मील की यात्रा, नमक बनाया।</li>
+                <li>👔 <strong>विदेशी कपड़े, चीनी, अलकोहल का बहिष्कार।strong></li>
+                <li>⛓️ <strong>लाखों गिरफ्तार हुए:</strong> महिलाएं, बच्चे भी शामिल।</li>
+                <li>🤐 <strong>Second Round (1931-34):</strong> कम प्रभावी, गांधी-इरविन पैक्ट।</li>
+            </ul>
+
+            <h2>5. विभिन्न समूहों की भूमिका</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>👨‍🌾 किसान (Peasants):</strong> चंपारण - नील की खेती से मुक्ति, खेड़ा - कर माफी।
+                </div>
+                <div class="timeline-item">
+                    <strong>👷 मजदूर (Workers):</strong> अहमदाबाद मिल मजदूरों की हड़ताल, टीकू जनरल।
+                </div>
+                <div class="timeline-item">
+                    <strong>👩 महिलाएं (Women):</strong> अहिल्या रंगा, अरुणा आसफ अली - सविनय अवज्ञा में।
+                </div>
+                <div class="timeline-item">
+                    <strong>🕌 मुस्लिम समुदाय:</strong> खिलाफत आंदोलन, अली भाई, मौलवी अब्दुल बारी।
+                </div>
+                <div class="timeline-item">
+                    <strong>💼 व्यापारी (Merchants):</strong> विदेशी सामानों का बहिष्कार, बिड़ला, टाटा।
+                </div>
+                <div class="timeline-item">
+                    <strong>🕯️ दलित (Dalits):</strong> अंबेडकर - अलग राजनीति, पूना पैक्ट (1932)।
+                </div>
+            </div>
+
+            <h2>6. क्रांतिकारी आंदोलन (Revolutionary Movement)</h2>
+            <ul>
+                <li>💣 <strong>भगत सिंह, चंद्रशेखर आजाद, सुखदेव:</strong> बम बनाना, ट्रेन लूटना, चेन्नई में विस्फोट।</li>
+                <li>⚔️ <strong>हिंदुस्तान सोशलिस्ट रिपब्लिकन आर्मी (HSRA):</strong> राम प्रसाद बिस्मिल, अशफाक उल्ला खां।</li>
+                <li>🎯 <strong>असेंबली में बम:</strong> चंद्रशेखर आजाद ने अपनी पहचान छुपाने के लिए।</li>
+                <li>🪦 <strong>मृत्यु दंड:</strong> भगत सिंह, सुखदेव, राजगुरु - 23 मार्च 1931।</li>
+            </ul>
+
+            <h2>7. महत्वपूर्ण कांग्रेस सत्र</h2>
+            <ul>
+                <li>📅 <strong>नागपुर सेशन (1920):</strong> असहयोग आंदोलन स्वीकृत।</li>
+                <li>📅 <strong>कराची सेशन (1931):</strong> मौलिक अधिकार, मौलिक कर्तव्य।</li>
+            </ul>
+
+            <h2>8. महत्वपूर्ण तारीखें (Important Dates)</h2>
+            <table style="width:100%; border-collapse:collapse; margin:1.5rem 0;">
+                <tr style="background:#ff6b6b; color:white;">
+                    <th style="padding:1rem; text-align:left; border:1px solid #ddd;">तारीख</th>
+                    <th style="padding:1rem; text-align:left; border:1px solid #ddd;">घटना</th>
+                </tr>
+                <tr style="background:#f8f9ff;">
+                    <td style="padding:1rem; border:1px solid #ddd;">13 अप्रैल 1919</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">जलियांवाला बाग हत्याकांड</td>
+                </tr>
+                <tr>
+                    <td style="padding:1rem; border:1px solid #ddd;">1920</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">असहयोग आंदोलन शुरू</td>
+                </tr>
+                <tr style="background:#f8f9ff;">
+                    <td style="padding:1rem; border:1px solid #ddd;">फरवरी 1922</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">चौरी-चौरा घटना</td>
+                </tr>
+                <tr>
+                    <td style="padding:1rem; border:1px solid #ddd;">मार्च 1930</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">नमक सत्याग्रह (दांडी मार्च)</td>
+                </tr>
+                <tr style="background:#f8f9ff;">
+                    <td style="padding:1rem; border:1px solid #ddd;">23 मार्च 1931</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">भगत सिंह को फांसी</td>
+                </tr>
+                <tr>
+                    <td style="padding:1rem; border:1px solid #ddd;">सितंबर 1932</td>
+                    <td style="padding:1rem; border:1px solid #ddd;">पूना पैक्ट (अंबेडकर-गांधी)</td>
+                </tr>
+            </table>
+
+            <h2>9. महत्वपूर्ण प्रश्न (Important Questions)</h2>
+            <div class="important">
+                <strong>❓ 1 अंक के प्रश्न:</strong>
+                <ul style="list-style-type:disc; padding-left:2rem;">
+                    <li>रॉलेट एक्ट क्या था?</li>
+                    <li>जलियांवाला बाग की घटना कब हुई?</li>
+                    <li>नमक सत्याग्रह कब शुरू हुआ?</li>
+                    <li>भगत सिंह को कब फांसी दी गई?</li>
+                </ul>
+            </div>
+            <div class="important">
+                <strong>❓ 3-5 अंक के प्रश्न:</strong>
+                <ul style="list-style-type:disc; padding-left:2rem;">
+                    <li>असहयोग आंदोलन की मुख्य विशेषताएं क्या थीं?</li>
+                    <li>सविनय अवज्ञा आंदोलन ने समाज के विभिन्न वर्गों को कैसे प्रभावित किया?</li>
+                    <li>क्रांतिकारी आंदोलन और गांधीवादी आंदोलन में क्या अंतर था?</li>
+                    <li>खिलाफत आंदोल�� किस देश से संबंधित था और इसकी प्रमुख नेता कौन थे?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="notes-section">
+            <h2>📹 वीडियो देखें</h2>
+            <div class="video-section">
+                <p style="margin-bottom:1rem;"><strong>YouTube Playlist (भारत में राष्ट्रवाद - पूरा चैप्टर)</strong></p>
+                <iframe style="border-radius:15px;" width="100%" height="400" src="https://www.youtube.com/embed/videoseries?list=PLxxx" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="notes-section">
+            <h2>📄 PDF डाउनलोड करें</h2>
+            <p>पूरे चैप्टर की डिटेल्ड PDF नीचे से डाउनलोड करें:</p>
+            <a href="#" class="pdf-btn">📥 Download Full Chapter PDF</a>
+            <a href="#" class="pdf-btn">📥 Download Important Questions</a>
+            <a href="#" class="pdf-btn">📥 Download One-Liners</a>
+        </div>
+
+        <div class="notes-section">
+            <h2>✨ मुख्य बिंदु (Key Points)</h2>
+            <ul>
+                <li>प्रथम विश्व युद्ध के बाद भारत में राष्ट्रवाद का तेजी से विकास हुआ।</li>
+                <li>गांधीजी का असहयोग आंदोलन (1920-22) एक विशाल जनांदोलन बन गया।</li>
+                <li>सविनय अवज्ञा आंदोलन (1930-34) में सभी वर्गों की भागीदारी थी।</li>
+                <li>नमक सत्याग्रह ने अंग्रेजों की कानूनी शक्ति को चुनौती दी।</li>
+                <li>किसान, मजदूर, महिलाएं, मुस्लिम समुदाय सभी ने राष्ट्रीय आंदोलन में भाग लिया।</li>
+                <li>क्रांतिकारियों ने सशस्त्र संघर्ष का रास्ता अपनाया।</li>
+                <li>दलितों ने अपनी अलग पहचान के लिए संघर्ष किया (पूना पैक्ट)।</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <h3>StudyWithFun - आपकी सफलता हमारा लक्ष्य! 🎓</h3>
+        <p>© 2025 StudyWithFun. सभी अधिकार सुरक्षित। | Made with ❤️ for Students</p>
+        <p style="margin-top:1rem; font-size:0.9rem;">यह सामग्री शैक्षणिक उ��्देश्य के लिए है। CBSE 2025-26 पाठ्यक्रम के आधार पर।</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Load Dark Mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all list items
+        document.querySelectorAll('li').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add animation to sections on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.notes-section').forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled > 300) {
+                document.body.style.scrollPaddingTop = '80px';
+            }
+        });
+    </script>
+</body>
+</html>
