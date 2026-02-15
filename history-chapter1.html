@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अध्याय 1: यूरोप में राष्ट्रवाद का उदय - StudyWithFun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --history-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            --bg-light: #f8f9ff; --bg-dark: #1a1a2e;
+            --text-dark: #2d3436; --text-light: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1); --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        body { font-family:'Poppins',sans-serif; background:var(--bg-light); color:var(--text-dark); line-height:1.6; }
+        body.dark-mode { background:var(--bg-dark); color:var(--text-light); }
+        nav { background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:1rem 0; box-shadow:0 2px 20px rgba(0,0,0,0.05); position:sticky; top:0; z-index:1000; }
+        body.dark-mode nav { background:rgba(26,26,46,0.95); }
+        .nav-container { max-width:1200px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Baloo 2',cursive; font-size:1.8rem; font-weight:800; background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+        .nav-links a { text-decoration:none; color:var(--text-dark); font-weight:500; transition:all 0.3s; }
+        body.dark-mode .nav-links a { color:var(--text-light); }
+        .nav-links a:hover { background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .dark-mode-toggle { background:var(--primary-gradient); border:none; color:white; padding:0.5rem 1rem; border-radius:25px; cursor:pointer; font-size:1.2rem; transition:transform 0.3s; }
+        .dark-mode-toggle:hover { transform:scale(1.1); }
+        .back-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; background:linear-gradient(135deg,#ff6b6b 0%,#ee5a6f 100%); color:white; text-decoration:none; border-radius:25px; font-weight:600; transition:all 0.3s; box-shadow:0 5px 15px rgba(255,107,107,0.3); }
+        .back-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(255,107,107,0.4); }
+        .subject-header { background:var(--history-gradient); color:white; padding:4rem 2rem 3rem; text-align:center; position:relative; overflow:hidden; }
+        .subject-header::before { content:'📜🔥🌍'; position:absolute; font-size:12rem; opacity:0.1; top:50%; left:50%; transform:translate(-50%,-50%); }
+        .subject-header h1 { font-family:'Baloo 2',cursive; font-size:clamp(2.5rem,6vw,4rem); margin-bottom:1rem; }
+        .container { max-width:1200px; margin:0 auto; padding:3rem 2rem; }
+        .notes-section { background:white; border-radius:20px; padding:2.5rem; box-shadow:var(--shadow); margin-bottom:3rem; }
+        body.dark-mode .notes-section { background:#2d3436; }
+        h2 { font-family:'Baloo 2',cursive; color:#ff6b6b; margin:2.5rem 0 1rem; font-size:2.2rem; }
+        body.dark-mode h2 { color:#ff9f43; }
+        ul { list-style:none; padding-left:2rem; }
+        li { margin-bottom:1.2rem; position:relative; }
+        li::before { content:'➤'; position:absolute; left:-2rem; color:#ff6b6b; font-weight:bold; font-size:1.2rem; }
+        .important { background:rgba(255,107,107,0.1); padding:1.5rem; border-radius:12px; margin:1.5rem 0; border-left:6px solid #ff6b6b; font-weight:500; }
+        body.dark-mode .important { background:rgba(255,107,107,0.2); }
+        .video-section { margin:3rem 0; text-align:center; background:#f8f9ff; padding:1.5rem; border-radius:15px; }
+        body.dark-mode .video-section { background:#2d3436; }
+        .pdf-btn { display:inline-block; background:#ff6b6b; color:white; padding:1rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.1rem; margin:1.5rem 0; box-shadow:0 6px 18px rgba(255,107,107,0.3); transition:all 0.3s; }
+        .pdf-btn:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(255,107,107,0.4); }
+        footer { background:var(--primary-gradient); color:white; text-align:center; padding:2.5rem; margin-top:5rem; }
+        @media (max-width:768px) { .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:white; flex-direction:column; padding:1.5rem; } body.dark-mode .nav-links { background:#1a1a2e; } .nav-links.active { display:flex; } .mobile-menu-toggle { display:block; } iframe { height:300px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">StudyWithFun 🎓</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sst.html">SST Home</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="subject-header">
+        <a href="sst.html" class="back-btn">← SST पेज पर वापस</a>
+        <h1>अध्याय 1: यूरोप में राष्ट्रवाद का उदय 📜🔥</h1>
+        <p>Class 10 हिंदी माध्यम | CBSE 2025-26 Syllabus | पूरे चैप्टर के आसान नोट्स, वीडियो और PDF</p>
+    </section>
+
+    <div class="container">
+        <div class="notes-section">
+            <h2>परिचय और महत्व</h2>
+            <p>19वीं सदी में यूरोप में राष्ट्रवाद का उदय हुआ। इससे पहले यूरोप में छोटे-छोटे राज्य और साम्राज्य थे (जैसे ऑस्ट्रिया-हंगरी, रूस)। राष्ट्रवाद ने लोगों में एकता, भाषा, संस्कृति और स्वतंत्र राष्ट्र-राज्य की भावना जगाई। फ्रांसीसी क्रांति (1789) ने इसकी नींव रखी।</p>
+            <div class="important">
+                <strong>मुख्य थीम:</strong> फ्रांसीसी क्रांति → नेपोलियन के युद्ध → 1830-1848 की क्रांतियां → जर्मनी और इटली का एकीकरण → राष्ट्रवाद का साम्राज्यवाद में बदलाव।
+            </div>
+
+            <h2>1. फ्रांसीसी क्रांति और राष्ट्र का विचार (1789)</h2>
+            <ul>
+                <li>नए विचार: La Patrie (पितृभूमि), Le Citoyen (नागरिक), समानता, स्वतंत्रता, बंधुत्व।</li>
+                <li>राष्ट्रगान La Marseillaise, संविधान, पुरानी विशेषाधिकार व्यवस्था खत्म।</li>
+                <li>नेपोलियन (1799-1815): Civil Code 1804 – कानून के समक्ष समानता, संपत्ति अधिकार, लेकिन अन्य देशों में विरोध (राष्ट्रवाद फैला)।</li>
+            </ul>
+
+            <h2>2. यूरोप में राष्ट्रवाद का विकास</h2>
+            <ul>
+                <li>उदारवादी (Liberals): मध्यम वर्ग – संविधान, संसद, लेकिन महिलाओं/मजदूरों को मताधिकार नहीं।</li>
+                <li>रूमानियत (Romanticism): कवि/कलाकार (जैसे हर्डर) – लोक संस्कृति, भाषा, संगीत से राष्ट्रवाद।</li>
+                <li>1848 क्रांतियां: फ्रांस में Louis Philippe हटे, लेकिन जर्मनी/इटली में असफल (महिलाओं की भूमिका महत्वपूर्ण लेकिन अधिकार नहीं मिले)।</li>
+            </ul>
+
+            <h2>3. राष्ट्र-राज्यों का निर्माण (1830-1848 क्रांतियां)</h2>
+            <ul>
+                <li>यूनान स्वतंत्रता (1821-1832): यूरोप का पहला सफल राष्ट्रवादी आंदोलन।</li>
+                <li>बाल्कन क्षेत्र: ओटोमन के खिलाफ स्लाव राष्ट्रवाद।</li>
+            </ul>
+
+            <h2>4. जर्मनी का एकीकरण (1871)</h2>
+            <ul>
+                <li>ओटो वॉन बिस्मार्क (प्रशिया): Blood and Iron नीति।</li>
+                <li>युद्ध: डेनमार्क (1864), ऑस्ट्रिया (1866), फ्रांस (1870-71)।</li>
+                <li>कूटनीति + सैन्य शक्ति से एकीकरण।</li>
+            </ul>
+
+            <h2>5. इटली का एकीकरण (1861-1870)</h2>
+            <ul>
+                <li>ग्यूसेप मेजिनी (Young Italy), काउंट कैवूर (सार्डीनिया), गैरीबाल्डी (Red Shirts)।</li>
+                <li>ऑस्ट्रिया से युद्ध, 1870 में रोम राजधानी।</li>
+            </ul>
+
+            <h2>6. राष्ट्रवाद और साम्राज्यवाद</h2>
+            <ul>
+                <li>बाल्कन में तनाव → प्रथम विश्व युद्ध (1914)।</li>
+                <li>राष्ट्रवाद ने यूरोप को राष्ट्र-राज्यों में बदला लेकिन संघर्ष बढ़ाए।</li>
+            </ul>
+
+            <h2>वीडियो लेक्चर (Full Chapter – Animation में समझो)</h2>
+            <div class="video-section">
+                <iframe width="100%" height="450" src="https://www.youtube.com/embed/ksTPzTWUb6o" title="यूरोप में राष्ट्रवाद का उदय | Class 10 History Chapter 1 | Sunlike Study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>यह पूरा चैप्टर एक बार देख लो – सब क्लियर हो जाएगा! 🔥 (Sunlike Study – सबसे अच्छा explanation)</p>
+            </div>
+
+            <h2>PDF डाउनलोड (नोट्स + PYQs + रिवीजन)</h2>
+            <a href="pdfs/europe-mein-rashtravaad-ka-uday-class10-notes.pdf" class="pdf-btn" download>📥 PDF डाउनलोड करें (Hindi Medium Notes)</a>
+            <p>PDF में: पूरे नोट्स, महत्वपूर्ण तिथियां, MCQ, लघु/दीर्घ उत्तर, और बोर्ड परीक्षा टिप्स। (pdfs फोल्डर में रखना!)</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 StudyWithFun | Robin के लिए स्पेशल – हिंदी माध्यम ❤️ | Jaipur से बनाया 🇮🇳</p>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सामाजिक विज्ञान - StudyWithFun</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --history-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            --geography-gradient: linear-gradient(135deg, #1dd1a1 0%, #10ac84 100%);
+            --civics-gradient: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%);
+            --economics-gradient: linear-gradient(135deg, #feca57 0%, #ee5a6f 100%);
+            --bg-light: #f8f9ff;
+            --bg-dark: #1a1a2e;
+            --text-dark: #2d3436;
+            --text-light: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        body.dark-mode nav {
+            background: rgba(26, 26, 46, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--text-light);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .dark-mode-toggle {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(84, 160, 255, 0.3);
+            animation: slideInDown 0.5s ease-out;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(84, 160, 255, 0.4);
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Header Section */
+        .subject-header {
+            background: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subject-header::before {
+            content: '🗺️📜🌍';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                transform: translate(-50%, -60%);
+            }
+        }
+        
+        .subject-header h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .subject-header p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            margin: 4rem 0 2rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInLeft 0.6s ease-out;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .section-header.history {
+            background: var(--history-gradient);
+        }
+        
+        .section-header.geography {
+            background: var(--geography-gradient);
+        }
+        
+        .section-header.civics {
+            background: var(--civics-gradient);
+        }
+        
+        .section-header.economics {
+            background: var(--economics-gradient);
+        }
+        
+        .section-header h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .section-header:hover h2 {
+            transform: translateX(10px);
+        }
+        
+        .section-header .icon {
+            font-size: 2.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Chapter Cards */
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .chapter-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .chapter-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .chapter-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .chapter-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .chapter-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        body.dark-mode .chapter-card {
+            background: #2d3436;
+        }
+        
+        .chapter-card.history {
+            border-top-color: #ff6b6b;
+        }
+        
+        .chapter-card.geography {
+            border-top-color: #1dd1a1;
+        }
+        
+        .chapter-card.civics {
+            border-top-color: #54a0ff;
+        }
+        
+        .chapter-card.economics {
+            border-top-color: #feca57;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .chapter-card:hover::before {
+            left: 100%;
+        }
+        
+        .chapter-number {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #667eea;
+            transition: all 0.3s;
+        }
+        
+        .chapter-card:hover .chapter-number {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            transform: scale(1.1);
+        }
+        
+        body.dark-mode .chapter-number {
+            background: rgba(102, 126, 234, 0.2);
+        }
+        
+        .chapter-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+        
+        .chapter-card:hover h3 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        body.dark-mode .chapter-card h3 {
+            color: var(--text-light);
+        }
+        
+        .chapter-english {
+            font-size: 0.9rem;
+            color: #b2bec3;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .chapter-desc {
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .chapter-desc {
+            color: #b2bec3;
+        }
+        
+        .chapter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #f0f3ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #667eea;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .chapter-card:hover .tag {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #a8b3ff;
+        }
+        
+        /* Extra Resources Section */
+        .resources-section {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        body.dark-mode .resources-section {
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .resources-section h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        body.dark-mode .resource-card {
+            background: #2d3436;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover .icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .resource-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-card p {
+            color: #636e72;
+            font-size: 0.95rem;
+        }
+        
+        body.dark-mode .resource-card p {
+            color: #b2bec3;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+        
+        body.dark-mode .mobile-menu-toggle {
+            color: var(--text-light);
+        }
+        
+        .mobile-menu-toggle:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                animation: slideDown 0.3s ease-out;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            body.dark-mode .nav-links {
+                background: #1a1a2e;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .subject-header {
+                padding: 3rem 1rem 2rem;
+            }
+            
+            .chapters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">StudyWithFun 🎓</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#subjects">Subjects</a></li>
+                <li><a href="#" onclick="alert('Login feature coming soon! 🚀'); return false;">Login</a></li>
+                <li><a href="#" onclick="alert('About page coming soon! 📚'); return false;">About</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Subject Header -->
+    <section class="subject-header">
+        <a href="index.html" class="back-btn">← होम पेज पर वापस जाएं</a>
+        <h1>सामाजिक विज्ञान 🗺️📜</h1>
+        <p>Class 10 हिंदी माध्यम – NCERT आधारित सभी अध्याय, नोट्स, वीडियो और PYQs! (2025-26 Syllabus)</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- History Section -->
+        <div class="section-header history">
+            <h2><span class="icon">📜</span> इतिहास - India and the Contemporary World-II</h2>
+            <p class="section-subtitle">भारत और समकालीन विश्व - भाग 2</p>
+        </div>
+
+        <div class="chapters-grid">
+            <!-- Chapter 1 – Working Link -->
+            <a href="chapter1.html" class="chapter-card history">
+                <span class="chapter-number">अध्याय 1</span>
+                <h3>यूरोप में राष्ट्रवाद का उदय</h3>
+                <p class="chapter-english">The Rise of Nationalism in Europe</p>
+                <p class="chapter-desc">फ्रांसीसी क्रांति से राष्ट्रवाद की शुरुआत, 1848 की क्रांति, इटली और जर्मनी का एकीकरण। नेपोलियन के युद्ध और यूरोप में राष्ट्रीय भावना का विकास।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                    <span class="tag">❓ PYQs</span>
+                </div>
+            </a>
+
+            <!-- Chapter 2 -->
+            <div class="chapter-card history" onclick="showComingSoon('अध्याय 2')">
+                <span class="chapter-number">अध्याय 2</span>
+                <h3>भारत में राष्ट्रवाद</h3>
+                <p class="chapter-english">Nationalism in India</p>
+                <p class="chapter-desc">प्रथम विश्वयुद्ध, रॉलेट एक्ट, जलियांवाला बाग, असहयोग, सविनय अवज्ञा, भारत छोड़ो आंदोलन।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                    <span class="tag">❓ PYQs</span>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="chapter-card history" onclick="showComingSoon('अध्याय 3')">
+                <span class="chapter-number">अध्याय 3</span>
+                <h3>वैश्विक संसार का निर्माण</h3>
+                <p class="chapter-english">The Making of a Global World</p>
+                <p class="chapter-desc">(Subtopics 1 to 1.3 only) पूर्व-आधुनिक व्यापार, 19वीं सदी में व्यापार और महामंदी।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                    <span class="tag">❓ PYQs</span>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="chapter-card history" onclick="showComingSoon('अध्याय 5')">
+                <span class="chapter-number">अध्याय 5</span>
+                <h3>प्रिंट संस्कृति और आधुनिक विश्व</h3>
+                <p class="chapter-english">Print Culture and the Modern World</p>
+                <p class="chapter-desc">छपाई का आविष्कार, भारत में प्रिंट, धार्मिक सुधार और समाचार पत्रों का विकास।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                    <span class="tag">❓ PYQs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Geography Section -->
+        <div class="section-header geography">
+            <h2><span class="icon">🌏</span> भूगोल - Contemporary India-II</h2>
+            <p class="section-subtitle">समकालीन भारत - भाग 2</p>
+        </div>
+        
+        <div class="chapters-grid">
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 1')">
+                <span class="chapter-number">अध्याय 1</span>
+                <h3>संसाधन एवं विकास</h3>
+                <p class="chapter-english">Resources and Development</p>
+                <p class="chapter-desc">संसाधनों के प्रकार, भूमि और मृदा संसाधन, मृदा अपरदन और संरक्षण।</p>
+                <div class="chapter-tags">
+                    <span class="tag">🗺️ मानचित्र</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 2')">
+                <span class="chapter-number">अध्याय 2</span>
+                <h3>वन और वन्यजीव संसाधन</h3>
+                <p class="chapter-english">Forest and Wildlife Resources</p>
+                <p class="chapter-desc">वनों का महत्व, संरक्षण, जैव विविधता और परियोजनाएं।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 3')">
+                <span class="chapter-number">अध्याय 3</span>
+                <h3>जल संसाधन</h3>
+                <p class="chapter-english">Water Resources</p>
+                <p class="chapter-desc">जल संसाधनों का महत्व, बहु-उद्देशीय परियोजनाएं, वर्षा जल संचयन।</p>
+                <div class="chapter-tags">
+                    <span class="tag">🗺️ मानचित्र</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 4')">
+                <span class="chapter-number">अध्याय 4</span>
+                <h3>कृषि</h3>
+                <p class="chapter-english">Agriculture</p>
+                <p class="chapter-desc">कृषि के प्रकार, फसल पैटर्न, हरित क्रांति और खाद्य सुरक्षा।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 5')">
+                <span class="chapter-number">अध्याय 5</span>
+                <h3>खनिज और ऊर्जा संसाधन</h3>
+                <p class="chapter-english">Minerals and Energy Resources</p>
+                <p class="chapter-desc">खनिज वितरण, ऊर्जा संसाधन (पारंपरिक और गैर-पारंपरिक)।</p>
+                <div class="chapter-tags">
+                    <span class="tag">🗺️ मानचित्र</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 6')">
+                <span class="chapter-number">अध्याय 6</span>
+                <h3>विनिर्माण उद्योग</h3>
+                <p class="chapter-english">Manufacturing Industries</p>
+                <p class="chapter-desc">उद्योगों का महत्व, वर्गीकरण, औद्योगिक क्षेत्र और प्रदूषण।</p>
+                <div class="chapter-tags">
+                    <span class="tag">🗺️ मानचित्र</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card geography" onclick="showComingSoon('भूगोल अध्याय 7')">
+                <span class="chapter-number">अध्याय 7</span>
+                <h3>राष्ट्रीय अर्थव्यवस्था की जीवन रेखाएँ</h3>
+                <p class="chapter-english">Lifelines of National Economy</p>
+                <p class="chapter-desc">(मानचित्र कार्य केवल) परिवहन, संचार और व्यापार।</p>
+                <div class="chapter-tags">
+                    <span class="tag">🗺️ मानचित्र</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Civics Section -->
+        <div class="section-header civics">
+            <h2><span class="icon">⚖️</span> नागरिक शास्त्र - Democratic Politics-II</h2>
+            <p class="section-subtitle">लोकतांत्रिक राजनीति - भाग 2</p>
+        </div>
+        
+        <div class="chapters-grid">
+            <div class="chapter-card civics" onclick="showComingSoon('नागरिक शास्त्र अध्याय 1')">
+                <span class="chapter-number">अध्याय 1</span>
+                <h3>सत्ता का संघटन</h3>
+                <p class="chapter-english">Power Sharing</p>
+                <p class="chapter-desc">बेल्जियम और श्रीलंका के उदाहरण, सत्ता संघटन के रूप।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card civics" onclick="showComingSoon('नागरिक शास्त्र अध्याय 2')">
+                <span class="chapter-number">अध्याय 2</span>
+                <h3>संघवाद</h3>
+                <p class="chapter-english">Federalism</p>
+                <p class="chapter-desc">भारत में संघवाद, विकेंद्रीकरण, पंचायती राज।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card civics" onclick="showComingSoon('नागरिक शास्त्र अध्याय 3')">
+                <span class="chapter-number">अध्याय 3</span>
+                <h3>लिंग, धर्म और जाति</h3>
+                <p class="chapter-english">Gender, Religion and Caste</p>
+                <p class="chapter-desc">लिंग असमानता, धर्मनिरपेक्षता, जाति और राजनीति।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card civics" onclick="showComingSoon('नागरिक शास्त्र अध्याय 4')">
+                <span class="chapter-number">अध्याय 4</span>
+                <h3>राजनीतिक दल</h3>
+                <p class="chapter-english">Political Parties</p>
+                <p class="chapter-desc">दलों की भूमिका, चुनौतियाँ, राष्ट्रीय और राज्य दल।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card civics" onclick="showComingSoon('नागरिक शास्त्��� अध्याय 5')">
+                <span class="chapter-number">अध्याय 5</span>
+                <h3>लोकतंत्र के परिणाम</h3>
+                <p class="chapter-english">Outcomes of Democracy</p>
+                <p class="chapter-desc">लोकतंत्र की विशेषताएं, आर्थिक विकास और सामाजिक न्याय।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economics Section -->
+        <div class="section-header economics">
+            <h2><span class="icon">💰</span> अर्थशास्त्र - Understanding Economic Development</h2>
+            <p class="section-subtitle">आर्थिक विकास की समझ</p>
+        </div>
+        
+        <div class="chapters-grid">
+            <div class="chapter-card economics" onclick="showComingSoon('अर्थशास्त्र अध्याय 1')">
+                <span class="chapter-number">अध्याय 1</span>
+                <h3>विकास</h3>
+                <p class="chapter-english">Development</p>
+                <p class="chapter-desc">विकास के संकेतक, आय, स्वास्थ्य, शिक्षा, सतत विकास।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card economics" onclick="showComingSoon('अर्थशास्त्र अध्याय 2')">
+                <span class="chapter-number">अध्याय 2</span>
+                <h3>भारतीय अर्थव्यवस्था के क्षेत्रक</h3>
+                <p class="chapter-english">Sectors of the Indian Economy</p>
+                <p class="chapter-desc">प्राथमिक, द्वितीयक, तृतीयक क्षेत्र, संगठित-असंगठित क्षेत्र।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card economics" onclick="showComingSoon('अर्थशास्त्र अध्याय 3')">
+                <span class="chapter-number">अध्याय 3</span>
+                <h3>मुद्रा और साख</h3>
+                <p class="chapter-english">Money and Credit</p>
+                <p class="chapter-desc">मुद्रा का कार्य, आधुनिक बैंकिंग, साख के स्रोत, स्व- सहायता समूह।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+
+            <div class="chapter-card economics" onclick="showComingSoon('अर्थशास्त्र अध्याय 4')">
+                <span class="chapter-number">अध्याय 4</span>
+                <h3>वैश्वीकरण और भारतीय अर्थव्यवस्था</h3>
+                <p class="chapter-english">Globalisation and the Indian Economy</p>
+                <p class="chapter-desc">(परिचय + वैश्वीकरण के कारक) MNC, विश्व व्यापार संगठन, भारत में वैश्वीकरण।</p>
+                <div class="chapter-tags">
+                    <span class="tag">📹 वीडियो</span>
+                    <span class="tag">📝 नोट्स</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extra Resources -->
+        <div class="resources-section">
+            <h2>अतिरिक्त संसाधन</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="icon">📚</div>
+                    <h3>पिछले वर्ष के प्रश्नपत्र</h3>
+                    <p>PYQs 2018-2025 के साथ सॉल्यूशन जल्द!</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon">🗺️</div>
+                    <h3>मानचित्र अभ्यास</h3>
+                    <p>सभी महत्वपूर्ण मानचित्र पॉइंट्स PDF में।</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon">📝</div>
+                    <h3>संक्षिप्त नोट्स</h3>
+                    <p>एक पेज रिवीजन नोट्स हर अध्याय के।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 StudyWithFun | हिंदी माध्यम के छात्रों के लिए स्पेशल ❤️</p>
+        <p>संपर्क: support@studywithfun.in | Jaipur से बनाया गया 🇮🇳</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Load Dark Mode Preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Coming Soon Alert
+        function showComingSoon(chapterName) {
+            alert(`${chapterName} के नोट्स और वीडियो बहुत जल्द आ रहे हैं! 📚\n\nथोड़ा और इंतज़ार करें... 🚀`);
+        }
+    </script>
+</body>
+</html>

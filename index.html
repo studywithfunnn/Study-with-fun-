@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyWithFun - 9वीं और 10वीं हिंदी माध्यम के लिए</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --teal-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --purple-cyan: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            --bg-light: #f8f9ff;
+            --bg-dark: #1a1a2e;
+            --text-dark: #2d3436;
+            --text-light: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        body.dark-mode nav {
+            background: rgba(26, 26, 46, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--text-light);
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark-mode-toggle {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, -30px) rotate(5deg); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero .tagline {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #636e72;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        
+        body.dark-mode .section-subtitle {
+            color: #b2bec3;
+        }
+        
+        /* Subject Cards */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .subject-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        body.dark-mode .subject-card {
+            background: #2d3436;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .subject-card-header {
+            height: 8px;
+            width: 100%;
+        }
+        
+        .subject-card.math .subject-card-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .subject-card.science .subject-card-header {
+            background: linear-gradient(135deg, #1dd1a1 0%, #10ac84 100%);
+        }
+        
+        .subject-card.sst .subject-card-header {
+            background: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%);
+        }
+        
+        .subject-card.english .subject-card-header {
+            background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%);
+        }
+        
+        .subject-card.hindi .subject-card-header {
+            background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+        }
+        
+        .subject-card-body {
+            padding: 2rem;
+        }
+        
+        .subject-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subject-english {
+            font-size: 0.9rem;
+            color: #b2bec3;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .subject-card p {
+            color: #b2bec3;
+        }
+        
+        .subject-card .arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .subject-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+        
+        body.dark-mode .mobile-menu-toggle {
+            color: var(--text-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            body.dark-mode .nav-links {
+                background: #1a1a2e;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Floating Animation for Icons */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .subject-icon {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .subject-card:nth-child(1) .subject-icon { animation-delay: 0s; }
+        .subject-card:nth-child(2) .subject-icon { animation-delay: 0.2s; }
+        .subject-card:nth-child(3) .subject-icon { animation-delay: 0.4s; }
+        .subject-card:nth-child(4) .subject-icon { animation-delay: 0.6s; }
+        .subject-card:nth-child(5) .subject-icon { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">StudyWithFun 🎓</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#" onclick="alert('Login feature coming soon! 🚀')">Login</a></li>
+                <li><a href="#" onclick="alert('About page coming soon! 📚')">About</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>StudyWithFun 🧠✨</h1>
+            <p class="tagline">9वीं और 10वीं हिंदी माध्यम के लिए आसान नोट्स, वीडियो, PYQs और टेस्ट – सब हिंदी में!</p>
+            <div class="hero-buttons">
+                <a href="#subjects" class="btn btn-primary">अभी शुरू करो 🚀</a>
+                <a href="#" onclick="alert('Signup feature coming soon! 🎉'); return false;" class="btn btn-secondary">फ्री साइन अप 📝</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <div class="container" id="subjects">
+        <h2 class="section-title">विषय चुनें 📚</h2>
+        <p class="section-subtitle">अपने पसंदीदा विषय पर क्लिक करें और सीखना शुरू करें!</p>
+        
+        <div class="subjects-grid">
+            <!-- Math Card -->
+            <a href="#" onclick="alert('गणित का पेज जल्द आ रहा है! 🔢'); return false;" class="subject-card math">
+                <div class="subject-card-header"></div>
+                <div class="subject-card-body">
+                    <div class="subject-icon">📐</div>
+                    <h3>गणित</h3>
+                    <p class="subject-english">Mathematics</p>
+                    <p>बीजगणित, ज्यामिति, त्रिकोणमिति और सभी अध्याय हिंदी में समझें। NCERT के सभी सवालों के हल!</p>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Science Card -->
+            <a href="#" onclick="alert('विज्ञान का पेज जल्द आ रहा है! 🔬'); return false;" class="subject-card science">
+                <div class="subject-card-header"></div>
+                <div class="subject-card-body">
+                    <div class="subject-icon">🔬</div>
+                    <h3>विज्ञान</h3>
+                    <p class="subject-english">Science</p>
+                    <p>भौतिकी, रसायन, जीव विज्ञान - सभी अवधारणाएं आसान भाषा में। प्रयोग, चित्र और वीडियो के साथ!</p>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- SST Card -->
+            <a href="sst.html" class="subject-card sst">
+                <div class="subject-card-header"></div>
+                <div class="subject-card-body">
+                    <div class="subject-icon">🗺️</div>
+                    <h3>सामाजिक विज्ञान</h3>
+                    <p class="subject-english">Social Science</p>
+                    <p>इतिहास, भूगोल, नागरिक शास्त्र और अर्थशास्त्र - सभी अध्याय विस्तार से। मानचित्र कार्य भी शामिल!</p>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- English Card -->
+            <a href="#" onclick="alert('अंग्रेजी का पेज जल्द आ रहा है! 📖'); return false;" class="subject-card english">
+                <div class="subject-card-header"></div>
+                <div class="subject-card-body">
+                    <div class="subject-icon">📖</div>
+                    <h3>अंग्रेजी</h3>
+                    <p class="subject-english">English</p>
+                    <p>First Flight, Footprints Without Feet - सभी कहानियाँ और कविताएँ हिंदी में समझाई गई। Grammar भी!</p>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Hindi Card -->
+            <a href="#" onclick="alert('हिंदी का पेज जल्द आ रहा है! ✍️'); return false;" class="subject-card hindi">
+                <div class="subject-card-header"></div>
+                <div class="subject-card-body">
+                    <div class="subject-icon">✍️</div>
+                    <h3>हिंदी</h3>
+                    <p class="subject-english">Hindi</p>
+                    <p>क्षितिज, कृतिका, स्पर्श - सभी पाठों की व्याख्या, सारांश और महत्वपूर्ण प्रश्न। व्याकरण भी शामिल!</p>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 StudyWithFun | हिंदी माध्यम के लिए बनाया गया ❤️</p>
+        <p><a href="mailto:support@studywithfun.in">support@studywithfun.in</a></p>
+        <p>CBSE Class 9 & 10 | सभी विषय | मुफ्त नोट्स और टेस्ट</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = '☀️';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
